@@ -5,15 +5,13 @@ import 'package:flutter_desktop_poc/model/slide_model.dart';
 import 'package:flutter_desktop_poc/widget/clock.dart';
 import 'package:flutter_desktop_poc/widget/custom_slider.dart';
 import 'package:flutter_desktop_poc/widget/promo_section.dart';
-import 'package:flutter_desktop_poc/data/data.dart' as data;
-import 'package:flutter_desktop_poc/widget/toggle_active_slider.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider<HomeBloc>(
-        create: (context) => HomeBloc(countSliders: 30),
+        create: (context) => HomeBloc(countSliders: 5),
         dispose: (context, homeBloc) => homeBloc.dispose(),
         child: Consumer<HomeBloc>(
           builder: (context, homeBloc, child) {
@@ -22,25 +20,17 @@ class HomeScreen extends StatelessWidget {
               autofocus: true,
               onKey: (value) {
                 var data = value.data;
-                // print(data.logicalKey.keyId);
                 if (value is RawKeyUpEvent && data.logicalKey.keyId == 4295426130) {
                   homeBloc.setCurrentSlider(-1);
                 }
                 if (value is RawKeyUpEvent && data.logicalKey.keyId == 4295426129) {
                   homeBloc.setCurrentSlider(1);
                 }
-                // if (value is RawKeyDownEvent && data.logicalKey.keyId == 4295426130) {
-                //   homeBloc.setCurrentSlider(-1);
-                // }
-                // if (value is RawKeyDownEvent && data.logicalKey.keyId == 4295426129) {
-                //   homeBloc.setCurrentSlider(1);
-                // }
               },
               child: Scaffold(
                 backgroundColor: Theme.of(context).backgroundColor,
                 body: CustomScrollView(
                   physics: NeverScrollableScrollPhysics(),
-                  // shrinkWrap: true,
                   controller: homeBloc.mainScrollCtrl,
                   slivers: [
                     SliverAppBar(
@@ -113,7 +103,7 @@ class HomeScreen extends StatelessWidget {
                                   height: 16,
                                 );
                               },
-                              itemCount: 30,
+                              itemCount: 5,
                             );
                           }),
                     ),
@@ -122,20 +112,20 @@ class HomeScreen extends StatelessWidget {
                         height: 32,
                       ),
                     ),
-                    // SliverToBoxAdapter(
-                    //   child: Center(
-                    //     child: RaisedButton(
-                    //       color: Colors.grey,
-                    //       child: Text(
-                    //         'Back to top',
-                    //         style: Theme.of(context).textTheme.bodyText1,
-                    //       ),
-                    //       onPressed: () {
-                    //         homeBloc.backToTop();
-                    //       },
-                    //     ),
-                    //   ),
-                    // ),
+                    SliverToBoxAdapter(
+                      child: Center(
+                        child: RaisedButton(
+                          color: Colors.grey,
+                          child: Text(
+                            'Back to top',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                          onPressed: () {
+                            homeBloc.backToTop();
+                          },
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

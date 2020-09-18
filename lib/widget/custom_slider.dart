@@ -29,7 +29,6 @@ class _CustomSliderState extends State<CustomSlider> {
       focusNode: _focusNode,
       onKey: (value) {
         RawKeyEventData data = value.data;
-        // print(data.logicalKey.keyId);
         if (value is RawKeyUpEvent && data.logicalKey.keyId == 4295426128 && animatedFinished == true) {
           int newActiveIndex = indexActiveSlide == 0 ? 0 : indexActiveSlide - 1;
           setState(() {

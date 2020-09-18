@@ -12,7 +12,6 @@ class PromoSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print(opacity);
     return Transform(
       transform: Matrix4.identity()..scale(scale, scale),
       child: Opacity(
@@ -44,14 +43,14 @@ class PromoSection extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
-              // RaisedButton(
-              //   color: Colors.grey,
-              //   child: Text(
-              //     'Read More',
-              //     style: Theme.of(context).textTheme.bodyText1,
-              //   ),
-              //   onPressed: () {},
-              // ),
+              RaisedButton(
+                color: Colors.grey,
+                child: Text(
+                  'Read More',
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                onPressed: () {},
+              ),
             ],
           ),
         ),

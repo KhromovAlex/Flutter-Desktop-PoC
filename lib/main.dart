@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_desktop_poc/screen/home_screen.dart';
-import 'dart:io' show Platform;
-import 'package:flutter/foundation.dart' 
-show debugDefaultTargetPlatformOverride;
+import 'package:flutter/foundation.dart' show debugDefaultTargetPlatformOverride;
 
 void main() {
   debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
